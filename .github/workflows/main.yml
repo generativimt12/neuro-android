@@ -22,15 +22,15 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Setup Android SDK
-      uses: android-actions/setup-android@v3
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v4
 
-    - name: Generate Gradle Wrapper & Build APK
+    - name: Generate Wrapper and Build APK
       run: |
         cd neuro-android
         gradle wrapper
         chmod +x gradlew
-        ./gradlew assembleDebug --stacktrace
+        ./gradlew assembleDebug
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
